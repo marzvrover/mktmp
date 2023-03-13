@@ -1,0 +1,39 @@
+name: Tests
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            cron \
+            tmpreaper
+      - name: Start cron
+        run: |
+          sudo service cron start
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Create Temporary File
+        id: create-tmp-file
+        run: |
+          TMP_FILE=`./src/mktmp.sh 1s`
+          echo "Created temporary file: $TMP_FILE"
+          echo "TMP_FILE=$TMP_FILE" >> $GITHUB_OUTPUT
+      - name: Wait 1 minute
+        run: |
+          sleep 1m
+      - name: Check
+        env:
+          TMP_FILE: ${{ steps.create-tmp-file.outputs.TMP_FILE }}
+        run: |
+          if [ -e $TMP_FILE ]; then
+            echo "Temporary file still exists"
+            exit 1
+          else
+            echo "Temporary file was deleted"
+          fi

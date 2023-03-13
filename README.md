@@ -1,5 +1,7 @@
 # mktmp
 
+[![Tests](https://github.com/marzvrover/mktmp/actions/workflows/tests.yml/badge.svg)](https://github.com/marzvrover/mktmp/actions/workflows/tests.yml)
+
 Make a tempfile that is cleaned up by tmpreaper using crontab to run tmpreaper every minute.
 
 I tried to make this as POSIX compliant as possible with the only additional requirements being `which`, `mktemp`, and `tmpreaper`.
