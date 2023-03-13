@@ -19,13 +19,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Create Temporary File
+        id: create-tmp-file
         run: |
           TMP_FILE=`./src/mktmp.sh 1s`
           echo "Created temporary file: $TMP_FILE"
+          echo "TMP_FILE=$TMP_FILE" >> $GITHUB_OUTPUT
       - name: Wait 1 minute
         run: |
           sleep 1m
       - name: Check
+        env:
+          TMP_FILE: ${{ steps.create-tmp-file.outputs.TMP_FILE }}
         run: |
           if [ -e $TMP_FILE ]; then
             echo "Temporary file still exists"
