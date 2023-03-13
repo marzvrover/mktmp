@@ -1,0 +1,26 @@
+name: Test
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y which mktemp tmpreaper
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Test
+        run: |
+          TMP_FILE=`./src/mktmp.sh 1s`
+          echo "Created temporary file: $TMP_FILE"
+          sleep 2
+          if [ -f $TMP_FILE ]; then
+            echo "Temporary file still exists"
+            exit 1
+          else
+            echo "Temporary file was deleted"
+          fi
