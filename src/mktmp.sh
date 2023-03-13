@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# designed to work on POSIX systems that can run
-
 function guardDependencies {
     hasDependencies=true
 
