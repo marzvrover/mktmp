@@ -11,14 +11,22 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
+            cron \
             tmpreaper
+      - name: Start cron
+        run: |
+          sudo service cron start
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Test
+      - name: Create Temporary File
         run: |
           TMP_FILE=`./src/mktmp.sh 1s`
           echo "Created temporary file: $TMP_FILE"
-          sleep 2
+      - name: Wait 1 minute
+        run: |
+          sleep 60
+      - name: Check
+        run: |
           if [ -f $TMP_FILE ]; then
             echo "Temporary file still exists"
             exit 1

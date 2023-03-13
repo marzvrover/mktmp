@@ -4,21 +4,28 @@ guardDependencies () {
     hasDependencies=true
 
     # ensure which is installed
-    if ! command -v which &> /dev/null
+    if ! command -v which > /dev/null 2>&1
     then
         >&2 echo "which is not installed. Please install it."
         hasDependencies=false
     fi
 
     # ensure mktemp is installed
-    if ! command -v mktemp &> /dev/null
+    if ! command -v mktemp > /dev/null 2>&1
     then
         >&2 echo "mktemp is not installed. Please install it."
         hasDependencies=false
     fi
 
     # ensure crontab is installed
-    if ! command -v tmpreaper &> /dev/null
+    if ! command -v crontab > /dev/null 2>&1
+    then
+        >&2 echo "crontab is not installed. Please install it."
+        hasDependencies=false
+    fi
+
+    # ensure tmpreaper is installed
+    if ! command -v tmpreaper > /dev/null 2>&1
     then
         >&2 echo "tmpreaper is not installed. Please install it."
         hasDependencies=false
