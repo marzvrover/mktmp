@@ -24,10 +24,10 @@ jobs:
           echo "Created temporary file: $TMP_FILE"
       - name: Wait 1 minute
         run: |
-          sleep 60
+          sleep 1m
       - name: Check
         run: |
-          if [ -f $TMP_FILE ]; then
+          if [ -e $TMP_FILE ]; then
             echo "Temporary file still exists"
             exit 1
           else
