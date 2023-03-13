@@ -2,9 +2,9 @@
 
 Make a tempfile that is cleaned up by tmpreaper using crontab to run tmpreaper every minute.
 
-I tried to make this as POSIX compliant as possible with the only additional requirement being tmpreaper.
+I tried to make this as POSIX compliant as possible with the only additional requirements being `which`, `mktemp`, and `tmpreaper`.
 
-tmpreaper comes is the Debian package tmpreaper. It is widely available on many operating systems including macOS via [homebrew](https://brew.sh) and [macports](https://www.macports.org/).
+tmpreaper is the Debian package tmpreaper. It is widely available on many operating systems including macOS via [homebrew](https://brew.sh) and [macports](https://www.macports.org/).
 
 ## Purpose
 

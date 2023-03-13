@@ -3,28 +3,28 @@
 function guardDependencies {
     hasDependencies=true
 
-    # check which is installed
+    # ensure which is installed
     if ! command -v which &> /dev/null
     then
         >&2 echo "which is not installed. Please install it."
         $hasDependencies=false
     fi
 
-    # check if mktemp is installed
+    # ensure mktemp is installed
     if ! command -v mktemp &> /dev/null
     then
         >&2 echo "mktemp is not installed. Please install it."
         $hasDependencies=false
     fi
 
-    # first check that tmpreaper is installed
+    # ensure crontab is installed
     if ! command -v tmpreaper &> /dev/null
     then
-        >&2 echo "tmpreaper is not installed. Please install it first."
+        >&2 echo "tmpreaper is not installed. Please install it."
         $hasDependencies=false
     fi
 
-    # check if hasDependencies is false
+    # ensure no dependencies are missing
     if [ $hasDependencies = false ]
     then
         exit 1
