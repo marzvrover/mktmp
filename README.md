@@ -1,6 +1,11 @@
-# mktmp
+<div align="center">
+    <img alt="Dalle Generated Logo" src="https://raw.githubusercontent.com/marzvrover/mktmp/main/.github/resources/dalle_logo_0.png" />
+</div>
+<br />
 
 [![Tests](https://github.com/marzvrover/mktmp/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/marzvrover/mktmp/actions/workflows/tests.yml)
+
+# mktmp
 
 Make a tempfile that is cleaned up by tmpreaper using crontab to run tmpreaper every minute.
 
@@ -27,3 +32,4 @@ The files are created in `/tmp/tmpreaper.$LIFESPAN` and are cleaned up by tmprea
 ## Thanks
 
 - [tmpreaper](https://packages.debian.org/source/bullseye/tmpreaper) by [Debian](https://www.debian.org/)
+- Dalle for the very odd and low effort "logo"
