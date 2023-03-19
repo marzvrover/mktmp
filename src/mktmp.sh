@@ -43,12 +43,12 @@ guardDependencies
 # guard against no arguments
 if [ $# -eq 0 ]
 then
-    >&2 echo "No arguments supplied. Please supply a lifetime for the temporary file"
+    >&2 echo "No arguments supplied. Please supply a lifespan for the temporary file"
     exit 1
 fi
 
-LIFETIME=$1; shift # pop the lifetime argument
-TMPDIR="/tmp/tmpreaper.$LIFETIME"
+LIFESPAN=$1; shift # pop the lifespan argument
+TMPDIR="/tmp/tmpreaper.$LIFESPAN"
 
 # check that the $TMPDIR directory exists
 if [ ! -d "$TMPDIR" ]
@@ -59,7 +59,7 @@ fi
 # set tmpreaper to run every minute using crontab
 if ! crontab -l | grep -q "$TMPDIR"
 then
-    (crontab -l ; echo "* * * * * `which tmpreaper` $LIFETIME $TMPDIR") | crontab -
+    (crontab -l ; echo "* * * * * `which tmpreaper` $LIFESPAN $TMPDIR") | crontab -
 fi
 
 # create a temporary file passing in the rest of the arguments

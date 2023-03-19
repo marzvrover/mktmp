@@ -19,10 +19,10 @@ Simply move `src/mktmp.sh` to a directory in your `$PATH` as `mktmp` and ensure 
 ## Usage
 
 ```bash
-mktmp <tmpreaper lifetime> [mktemp arguments]
+mktmp <tmpreaper lifespan> [mktemp arguments]
 ```
 
-The files are created in `/tmp/tmpreaper.$LIFETIME` and are cleaned up by tmpreaper every minute according to the lifetime.
+The files are created in `/tmp/tmpreaper.$LIFESPAN` and are cleaned up by tmpreaper every minute according to the lifespan.
 
 ## Thanks
 
